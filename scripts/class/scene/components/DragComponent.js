@@ -7,11 +7,11 @@ define([
       createjs = window.createjs;
   }
   
-  function TouchComponent(data) {
-    this._type = "TouchComponent";
+  function DragComponent(data) {
+    this._type = "DragComponent";
   }
   
-  var p = createjs.extend(TouchComponent, BaseComponent);
+  var p = createjs.extend(DragComponent, BaseComponent);
   
   p.isType = function(type){
     if(type == this._type){
@@ -28,6 +28,6 @@ define([
     });
   }
 
-  createjs.TouchComponent = createjs.promote(TouchComponent, "BaseComponent");
-  return TouchComponent;
+  createjs.DragComponent = createjs.promote(DragComponent, "BaseComponent");
+  return DragComponent;
 }); 
