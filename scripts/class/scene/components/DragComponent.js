@@ -23,9 +23,13 @@ define([
   
   p.initalize = function(obj){
       // no need to update the static object
-    obj.addEventListener("mousedown",function(e){
-      obj.onMouseDown(e);
-    });
+    
+    obj.on("pressmove",function(evt) {
+				// currentTarget will be the container that the event listener was added to:
+				evt.currentTarget.set_x(evt.stageX);
+				evt.currentTarget.set_y(evt.stageY);
+ 
+			});
   }
 
   createjs.DragComponent = createjs.promote(DragComponent, "BaseComponent");

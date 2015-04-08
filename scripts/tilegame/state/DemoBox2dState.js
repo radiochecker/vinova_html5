@@ -5,8 +5,10 @@ define([
   'class/service/ResourceService',
   'tilegame/common/GameSettings',
   'class/physics/box2d/Box2DManager',
-  'class/scene/objects/SceneObject'
-  ], function(createjs,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject) {
+  'class/scene/objects/SceneObject',
+  'class/scene/components/TouchComponent',
+  'class/scene/components/DragComponent',
+  ], function(createjs,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
   
  
 
@@ -42,6 +44,7 @@ define([
     obj2.set_x(10);
     obj2.set_y(500);
     obj2.AddComponent(Box2DManager.getInstance().CreateComponent("StaticComponent",{}));
+    obj2.AddComponent(new DragComponent());
 
     SceneService.getInstance().stage.addChild(obj,obj2,obj3);
 

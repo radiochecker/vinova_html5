@@ -37,6 +37,6 @@ require(["lib/easel",
   SceneService.getInstance().initalize(GameSetting.SCENE_SETTING);
   GuiService.getInstance().initalize();
   ResourceService.getInstance().initalize({});
-  GameStateService.getInstance().initalize({startstate:'DemoLoadingState'});
+  GameStateService.getInstance().initalize({startstate:'DemoBox2dState'});
   
 });

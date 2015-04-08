@@ -84,7 +84,13 @@ define([
     if(this.world == null){
       return;
     }
-    return new RigidComponent(this,data);
+    switch(name){
+      case "RigidComponent":
+        return  new RigidComponent(this,data); 
+      case "StaticComponent":
+        return new StaticComponent(this,data);
+    }
+    return null;
   } ;
   
   p.GetWorld =function(){

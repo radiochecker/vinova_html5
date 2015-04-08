@@ -67,6 +67,10 @@ define([
     return this.height;
   } ;
   
+  p.onMouseDown = function(e){
+    alert("click the scene object");
+  };
+  
   p.AddComponent = function(comp){
     comp.initalize(this);
     this._components.push(comp);
