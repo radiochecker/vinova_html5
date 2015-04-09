@@ -10,7 +10,7 @@ define([
   'class/scene/objects/SceneObject',
   'class/scene/components/TouchComponent',
   'class/scene/components/DragComponent',
-  ], function(createjs,hammer,LOG,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
+  ], function(createjs,Hammer,LOG,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
   
  
 
