@@ -32,12 +32,14 @@ define([
     obj.set_x(200);
     obj.set_y(20);
     obj.AddComponent(Box2DManager.getInstance().CreateComponent("RigidComponent",{}));
+    obj.AddComponent(new DragComponent());
     
     var obj3 = new SceneObject();
     obj3.initalize({width:50,height:50,color:"DeepSkyBlue"});
     obj3.set_x(220);
     obj3.set_y(80);
     obj3.AddComponent(Box2DManager.getInstance().CreateComponent("RigidComponent",{}));
+    obj3.AddComponent(new DragComponent());
     
     var obj2 = new SceneObject();
     obj2.initalize({width:600,height:20,color:"#ccc"});
@@ -45,6 +47,9 @@ define([
     obj2.set_y(500);
     obj2.AddComponent(Box2DManager.getInstance().CreateComponent("StaticComponent",{}));
     obj2.AddComponent(new DragComponent());
+    obj2.on("dragover",function(e){
+      Box2DManager.getInstance().Activate();
+    });
 
     SceneService.getInstance().stage.addChild(obj,obj2,obj3);
 

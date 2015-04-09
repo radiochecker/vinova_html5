@@ -41,9 +41,9 @@ define([
 				obj.dispatchEvent("positionupdate");
 		});
 		
-		obj.on("pressup",function(evt) {
-			 
+		obj.on("pressup",function(evt) {	 
 			 context.dragging = false;
+			 obj.dispatchEvent("dragover");
 		});
   }
 

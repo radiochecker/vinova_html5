@@ -70,7 +70,10 @@ define([
     for(var i =0; i< this._updatelist.length; i++){
       var body = this._updatelist[i].body;
       var obj = this._updatelist[i].sceneobj;
-      
+      if(!body.IsAwake())
+        continue;
+      if(!body.IsActive())
+        continue;
       var pos = body.GetPosition();
       var rot = body.GetAngle();
       obj.set_x(pos.get_x()* this.PTM);
@@ -79,6 +82,14 @@ define([
       
     }
   } ;
+  
+  p.Activate = function(){
+    for(var i =0; i< this._updatelist.length; i++){
+      var body = this._updatelist[i].body;
+      body.SetAwake(1);
+      body.SetActive(1); 
+    }
+  };
   
   p.CreateComponent = function(name,data){
     if(this.world == null){
