@@ -37,7 +37,7 @@ define([
     var context = this;
     
     obj.on("positionupdate",function(e){
-      body.set_position(context.SceneToBox2dPos(obj,context._manager.GetPTM()));
+      body.SetTransform(context.SceneToBox2dPos(obj,context._manager.GetPTM()),0);
     });
     // no need to update the static object
   }
