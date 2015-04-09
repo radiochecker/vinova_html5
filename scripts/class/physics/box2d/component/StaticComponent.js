@@ -34,6 +34,11 @@ define([
     
     body.CreateFixture(Box2DHelper.createRectangleShape(obj.get_width()/this._manager.GetPTM(),obj.get_height()/this._manager.GetPTM()), 1.0);
     
+    var context = this;
+    
+    obj.on("positionupdate",function(e){
+      body.set_position(context.SceneToBox2dPos(obj,context._manager.GetPTM()));
+    });
     // no need to update the static object
   }
 
