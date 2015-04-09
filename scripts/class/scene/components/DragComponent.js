@@ -38,6 +38,7 @@ define([
 			  
 				evt.currentTarget.set_x(evt.stageX/scale - context.detx);
 				evt.currentTarget.set_y(evt.stageY/scale - context.dety);
+				obj.dispatchEvent("positionupdate");
 		});
 		
 		obj.on("pressup",function(evt) {
