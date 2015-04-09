@@ -1,5 +1,7 @@
 define([
   'lib/easel',
+  'lib/hammer.min',
+  "class/base/GameLog",
   'class/state/GameState',
   'class/service/SceneService',
   'class/service/ResourceService',
@@ -8,7 +10,7 @@ define([
   'class/scene/objects/SceneObject',
   'class/scene/components/TouchComponent',
   'class/scene/components/DragComponent',
-  ], function(createjs,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
+  ], function(createjs,hammer,LOG,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
   
  
 
@@ -52,6 +54,12 @@ define([
     });
 
     SceneService.getInstance().stage.addChild(obj,obj2,obj3);
+    
+    var myElement = document.getElementById(SETTINGS.SCENE_SETTING.CANVAS_NAME);
+    var mc = new Hammer(myElement);
+    mc.on("panleft panright tap press", function(ev) {
+      LOG.LogInfo(ev.type +" gesture detected.");
+    });
 
   } ;
   
