@@ -57,8 +57,24 @@ define([
     
     var myElement = document.getElementById(SETTINGS.SCENE_SETTING.CANVAS_NAME);
     var mc = new Hammer(myElement);
-    mc.on("panleft panright tap press", function(ev) {
-      LOG.LogInfo(ev.type +" gesture detected.");
+    mc.on("swipeleft", function(ev) {
+      obj2.set_x(obj2.get_x()-20);
+      obj2.dispatchEvent("positionupdate");      
+    });
+    
+    mc.on("swiperight", function(ev) {
+      obj2.set_x(obj2.get_x()+20);
+      obj2.dispatchEvent("positionupdate");      
+    });
+    
+    mc.on("swipeup", function(ev) {
+      obj2.set_y(obj2.get_y()-20);
+      obj2.dispatchEvent("positionupdate");      
+    });
+    
+    mc.on("swipedown", function(ev) {
+      obj2.set_y(obj2.get_y()+20);
+      obj2.dispatchEvent("positionupdate");      
     });
 
   } ;
