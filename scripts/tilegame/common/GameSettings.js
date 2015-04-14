@@ -2,7 +2,7 @@ define(
 function() {
   var _settings = {
     TRACKING_SETTING:{
-      GOOGLE_ACCOUNT:'UA-XXXXX-X'
+      GOOGLE_ACCOUNT:'UA-61692563-1'
     } ,
     
     SCENE_SETTING:{

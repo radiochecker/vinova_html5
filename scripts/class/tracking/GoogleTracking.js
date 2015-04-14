@@ -9,20 +9,22 @@ define([
       createjs = window.createjs;
   }
   
+  var _gaq = window._gaq;
+  
   function GoogleTracking() {
- 
+    this._gaq = null;
   }
   
   var p = createjs.extend(GoogleTracking, BaseObject);
 
   p.initalize = function(accountid){
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', accountid]);
-    _gaq.push(['_trackPageview']);
+    this._gaq = window._gaq;
+    this._gaq.push(['_setAccount', accountid]);
+    this._gaq.push(['_trackPageview']);
   } ;
   
   p.addevent = function(eventdata,data){
-    _gaq.push(['_trackPageview']);
+    this._gaq.push(['_trackEvent','video',"play","this is a test"]);
   };
 
 

@@ -1,4 +1,4 @@
-var _gasrc = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var _gasrc = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga';
  
 require.config({
   shim: {
@@ -26,17 +26,18 @@ require(["lib/easel",
          "tilegame/service/GameStateService",
          "tilegame/common/GameSettings",
          "class/service/ResourceService",
+         "class/tracking/TrackingManager", 
          "class/gui/GuiService",
-         "class/service/SceneService"], function(createjs,GameStateService,GameSetting,ResourceService,GuiService,SceneService) {
+         "class/service/SceneService"], function(createjs,GameStateService,GameSetting,ResourceService,TrackingManager,GuiService,SceneService) {
 
   if (typeof createjs === 'undefined' ) {
     createjs = window.createjs;
   }
  
-       
+  TrackingManager.getInstance().initalize(GameSetting.TRACKING_SETTING);       
   SceneService.getInstance().initalize(GameSetting.SCENE_SETTING);
   GuiService.getInstance().initalize();
   ResourceService.getInstance().initalize({});
   GameStateService.getInstance().initalize({startstate:'DemoBox2dState'});
-  
+  TrackingManager.getInstance().AddEvent("gamestart",""); 
 });
