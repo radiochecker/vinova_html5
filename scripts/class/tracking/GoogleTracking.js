@@ -22,7 +22,7 @@ define([
   } ;
   
   p.addevent = function(eventdata,data){
-    _gaq.push(['_trackPageview']);
+    _gaq.push(['_trackEvent','video',"play","this is a test"]);
   };
 
 
