@@ -32,6 +32,10 @@ define([
   p.AddEvent = function(eventname,data){
     this._google.addevent(eventname,data);
   } ;
+  
+  p.Update = function(time_elapsed){
+    this._google.Update(time_elapsed);
+  } ;
  
   function createInstance() {
     var _tracking_manager_instance = new TrackingManager();
