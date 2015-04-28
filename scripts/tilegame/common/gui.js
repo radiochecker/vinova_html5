@@ -6,7 +6,7 @@ function() {
         {
           type: "plainbutton",
           property:{
-            x:100,y:50,
+            x:20,y:50,
             name: "close",
             label:"close",
             color:"DeepSkyBlue",
@@ -29,7 +29,7 @@ function() {
         {
           type: "plainbutton",
           property:{
-            x:100,
+            x:20,
             y:50,
             name: "close",
             label:"close",
@@ -42,7 +42,7 @@ function() {
           type: "imagebutton",
           property:{
             x:40,
-            y:100,
+            y:200,
             image:"buttondemo",
             name: "next"
           }

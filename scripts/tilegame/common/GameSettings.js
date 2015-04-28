@@ -8,8 +8,8 @@ function() {
     SCENE_SETTING:{
       CANVAS_NAME:"demoCanvas",
       FULLSCREEN: true,
-      WIDTH:750,
-      HEIGHT:1035
+      WIDTH:350,
+      HEIGHT:635
     },
       
     BOX2D_SETTING:{
