@@ -34,8 +34,8 @@ function() {
             name: "close",
             label:"close",
             color:"DeepSkyBlue",
-            width:180,
-            height:30
+            width:280,
+            height:80
           }
         },
         {

@@ -13,7 +13,6 @@ define([
   
   function DemoSplashingState(statemachine) {
     this.GameState_constructor("DemoSplashingState",statemachine);
-    this.page = new createjs.Container();
     this.waitingtime = 5;
   }
   

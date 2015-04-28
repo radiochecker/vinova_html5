@@ -16,9 +16,18 @@ define([
     var p = createjs.extend(EntryWindow, JsonWindow);
 
     p.initalize = function() {
-       
-
-       this.initalizeWithJson(GUI.ENTRY_WINDOW);   
+      this.initalizeWithJson(GUI.ENTRY_WINDOW);  
+      
+      var btn  = this.getChildByName("close");
+      btn.on("click",function(e){
+          alert("close got hit");
+      });
+      
+      var btn2  = this.getChildByName("next");
+      btn2.on("click",function(e){
+          alert("next got hit");
+      });
+      
     } ;
 
     createjs.EntryWindow = createjs.promote(EntryWindow, "JsonWindow");
