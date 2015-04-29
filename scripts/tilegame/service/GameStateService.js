@@ -2,12 +2,16 @@ define([
   'lib/easel',
   "class/state/StateMachine",
   'class/service/ServiceBase',
+  "class/base/GameDefine",
   "class/base/GameLog",
   'tilegame/state/DemoLoadingState',
   'tilegame/state/DemoSplashingState',
   'tilegame/state/DemoEntryState',
-  'tilegame/state/DemoBox2dState'
-  ], function(createjs,StateMachine,ServiceBase,Log,DemoLoadingState,DemoSplashingState,DemoEntryState,DemoBox2dState) {
+  'tilegame/state/DemoGameState',
+  'tilegame/state/DemoBox2dState',
+  "tilegame/common/GameSettings",
+  
+  ], function(createjs,StateMachine,ServiceBase,DEFINE,Log,DemoLoadingState,DemoSplashingState,DemoEntryState,DemoGameState,DemoBox2dState,SETTINGS) {
   
   if (typeof createjs === 'undefined' ) {
         createjs = window.createjs;
@@ -27,10 +31,36 @@ define([
     
     this.stateMachine = new StateMachine();
     this.stateMachine.initalize([
-      DemoLoadingState,DemoSplashingState,DemoEntryState,DemoBox2dState
+      DemoLoadingState,DemoSplashingState,DemoEntryState,DemoBox2dState,DemoGameState
     ]);
     Log.LogInfo("initalize the game state service");
     this.stateMachine.PushState(setting.startstate);
+    
+    var myElement = document.getElementById(SETTINGS.SCENE_SETTING.CANVAS_NAME);
+    var mc = new Hammer(myElement);
+    
+    var context = this;
+    
+    mc.on("swipeleft", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Swipe(DEFINE.DIRECTION.LEFT,ev);
+    });
+    
+    mc.on("swiperight", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Swipe(DEFINE.DIRECTION.RIGHT,ev);
+    });
+    
+    mc.on("swipeup", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Swipe(DEFINE.DIRECTION.UP,ev);
+    });
+    
+    mc.on("swipedown", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Swipe(DEFINE.DIRECTION.DOWN,ev);
+    });
+    
   } ;
   
   p.Update = function(time_elapsed){

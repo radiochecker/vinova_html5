@@ -65,13 +65,13 @@ define([
         case "imagebutton":
           var button = new ImageButton();
           button.initalizeWithJson(data.property);
-          button.addEventListener("mousedown",function(e){alert("imagebutton");});
+          //button.addEventListener("mousedown",function(e){alert("imagebutton");});
           this.addChild(button);
           break;
         case "plainbutton":
           var button = new PlainButton();
           button.initalizeWithJson(data.property);
-          button.addEventListener("mousedown",function(e){alert("plainbutton");});
+          //button.addEventListener("mousedown",function(e){alert("plainbutton");});
           this.addChild(button);
           break;
         default:

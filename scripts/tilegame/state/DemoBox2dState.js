@@ -2,6 +2,7 @@ define([
   'lib/easel',
   'lib/hammer.min',
   "class/base/GameLog",
+  "class/base/GameDefine",
   'class/state/GameState',
   'class/service/SceneService',
   'class/service/ResourceService',
@@ -10,7 +11,7 @@ define([
   'class/scene/objects/SceneObject',
   'class/scene/components/TouchComponent',
   'class/scene/components/DragComponent',
-  ], function(createjs,Hammer,LOG,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
+  ], function(createjs,Hammer,LOG,DEFINE,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
   
  
 
@@ -55,27 +56,7 @@ define([
 
     SceneService.getInstance().stage.addChild(obj,obj2,obj3);
     
-    var myElement = document.getElementById(SETTINGS.SCENE_SETTING.CANVAS_NAME);
-    var mc = new Hammer(myElement);
-    mc.on("swipeleft", function(ev) {
-      obj2.set_x(obj2.get_x()-20);
-      obj2.dispatchEvent("positionupdate");      
-    });
-    
-    mc.on("swiperight", function(ev) {
-      obj2.set_x(obj2.get_x()+20);
-      obj2.dispatchEvent("positionupdate");      
-    });
-    
-    mc.on("swipeup", function(ev) {
-      obj2.set_y(obj2.get_y()-20);
-      obj2.dispatchEvent("positionupdate");      
-    });
-    
-    mc.on("swipedown", function(ev) {
-      obj2.set_y(obj2.get_y()+20);
-      obj2.dispatchEvent("positionupdate");      
-    });
+   
 
   } ;
   
@@ -84,6 +65,27 @@ define([
     Box2DManager.getInstance().Update(time_elapsed);
   } ;
   
+  p.Swipe = function(direction,e){
+    switch (direction){
+      case DEFINE.DIRECTION.LEFT:
+        obj2.set_x(obj2.get_x()-20);
+        obj2.dispatchEvent("positionupdate");     
+        break;
+      case DEFINE.DIRECTION.RIGHT:
+        obj2.set_x(obj2.get_x()+20);
+        obj2.dispatchEvent("positionupdate");  
+        break; 
+      case DEFINE.DIRECTION.UP:
+        obj2.set_y(obj2.get_y()-20);
+        obj2.dispatchEvent("positionupdate");  
+        break;
+      case DEFINE.DIRECTION.DOWN:
+        obj2.set_y(obj2.get_y()+20);
+        obj2.dispatchEvent("positionupdate");  
+        break;
+      
+    }
+  } ;
    
   p.Exit = function () {
      Box2DManager.getInstance().deinitalize();

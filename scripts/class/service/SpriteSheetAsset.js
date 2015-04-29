@@ -22,6 +22,9 @@ define([
         height : requestdata.height
       }
     };
+    if(requestdata.hasOwnProperty("animations")){
+      spritemap.animations = requestdata.animations;
+    }
     this.spritesheet = new createjs.SpriteSheet(spritemap);
   }
 

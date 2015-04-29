@@ -44,6 +44,10 @@ define([
     
   } ;
 
+  p.Swipe = function(direction,ev) {
+    
+  } ;
+  
   p.Update = function(time_elapsed) {       
     
   };

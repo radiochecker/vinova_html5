@@ -2,8 +2,9 @@ define([
     'lib/easel',
     'class/gui/JsonWindow',
     'class/service/ResourceService',
-    'tilegame/common/gui'
-    ], function(createjs,JsonWindow,ResourceService,GUI) {
+    'tilegame/common/gui',
+    "tilegame/service/GameStateService"
+    ], function(createjs,JsonWindow,ResourceService,GUI,GameStateService) {
   
     if (typeof createjs === 'undefined' ) {
         createjs = window.createjs;
@@ -25,7 +26,7 @@ define([
       
       var btn2  = this.getChildByName("next");
       btn2.on("click",function(e){
-          alert("next got hit");
+          GameStateService.getInstance().stateMachine..ChangeState("DemoGameState");
       });
       
     } ;

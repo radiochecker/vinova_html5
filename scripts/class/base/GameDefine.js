@@ -13,6 +13,12 @@ function() {
       WEIXIN:"weixin",
       UNKNOWN:"unknown"
     },
+    DIRECTION:{
+      LEFT:0,
+      RIGHT:1,
+      UP:2,
+      DOWN:3
+    },
     OPERATION_RESULT:{
       UNKNOWN:-1,
       SUCCESS:0,
