@@ -40,30 +40,36 @@ define([
     var myElement = document.getElementById(SETTINGS.SCENE_SETTING.CANVAS_NAME);
     var mc = new Hammer(myElement);
     
+    mc.get('pinch').set({enable:true});
+    mc.get('rotate').set({enable:true});
+    
+    mc.get('pan').set({direction:Hammer.DIRECTION_ALL});
+    mc.get('swipe').set({direction:Hammer.DIRECTION_ALL});
+    
     var context = this;
     
     mc.on("swipeleft", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.LEFT,ev);
-      ev.preventDefault();
+      ev.gesture.preventDefault();
     });
     
     mc.on("swiperight", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.RIGHT,ev);
-      ev.preventDefault();
+      ev.gesture.preventDefault();
     });
     
     mc.on("swipeup", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.UP,ev);
-      ev.preventDefault();
+      ev.gesture.preventDefault();
     });
     
     mc.on("swipedown", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.DOWN,ev);
-      ev.preventDefault();
+      ev.gesture.preventDefault();
     });
     
   } ;

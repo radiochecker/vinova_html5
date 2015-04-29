@@ -23,7 +23,7 @@ define([
   p.Enter = function () {
     this.GameState_Enter();
     this.character = new GameObject();
-    this.character.initalize({}) ;
+    this.character.initalize({spritesheet:"character"}) ;
     
     this.character.set_x(100);
     this.character.set_y(100);
