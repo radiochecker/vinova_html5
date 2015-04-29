@@ -26,13 +26,13 @@ define([
   
   p.initalize = function(data){
      
-     var spritesheet = new createjs.Sprite(ResourceService.getInstance().GetAsset("character").spritesheet);
+   
      
-     this.character = new createjs.BitmapAnimation(spritesheet);
+     this.character = new createjs.Sprite(ResourceService.getInstance().GetAsset("character").spritesheet,'down');
      
      this.character.x = 0;
      this.character.y = 0;
-     this.character.gotoAndPlay('idle'); 
+     this.character.gotoAndPlay('down'); 
      this.addChild(this.character); 
 
     this.set_x(0);
@@ -40,43 +40,7 @@ define([
 
   } ;
   
-  p.set_x = function(val){
-    this.x = val;
-  } ;
-  
-  p.set_y = function(val){
-    this.y = val;
-  } ;
-  
-  p.set_rotation = function(val){
-    this.rotation = val;
-  } ;
-  
-  p.get_x = function(val){
-    return this.x;
-  } ;
-  
-  p.get_y = function(val){
-    return this.y;
-  } ;
-  
-  p.get_width = function(val){
-    return this.width;
-  } ;
-  
-  p.get_height = function(val){
-    return this.height;
-  } ;
-  
-  p.onMouseDown = function(e){
-    alert("click the scene object");
-  };
-  
-  p.AddComponent = function(comp){
-    comp.initalize(this);
-    this._components.push(comp);
-  }
-
-  createjs.SceneObject = createjs.promote(SceneObject, "Container");
-  return SceneObject;
+ 
+  createjs.GameObject = createjs.promote(GameObject, "SceneObject");
+  return GameObject;
 }); 

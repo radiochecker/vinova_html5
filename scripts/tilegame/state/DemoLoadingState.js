@@ -21,7 +21,7 @@ define([
   p.Enter = function () {
     this.GameState_Enter();
     
-    var window = GuiService.getInstance().AddWindow(LoadingWindow);
+    this.window = GuiService.getInstance().AddWindow(LoadingWindow);
     
     /* var stage = SceneService.getInstance().stage;
     var bk = new createjs.Shape();
@@ -56,7 +56,7 @@ define([
   
   p.Exit = function () {
     this.GameState_Exit();
-    GuiService.getInstance().RemoveWindow("LoadingWindow");
+    GuiService.getInstance().RemoveWindow(this.window);
     //var stage = SceneService.getInstance().stage;
     //stage.removeChild(this.page);
   } ;

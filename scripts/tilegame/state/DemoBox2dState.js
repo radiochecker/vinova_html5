@@ -1,6 +1,5 @@
 define([
   'lib/easel',
-  'lib/hammer.min',
   "class/base/GameLog",
   "class/base/GameDefine",
   'class/state/GameState',
@@ -11,7 +10,7 @@ define([
   'class/scene/objects/SceneObject',
   'class/scene/components/TouchComponent',
   'class/scene/components/DragComponent',
-  ], function(createjs,Hammer,LOG,DEFINE,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
+  ], function(createjs,LOG,DEFINE,GameState,SceneService,ResourceService,SETTINGS,Box2DManager,SceneObject,TouchComponent,DragComponent) {
   
  
 

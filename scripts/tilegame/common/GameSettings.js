@@ -20,12 +20,13 @@ function() {
     PRELOAD_ASSETS : [
         {src: "image1.png", id: "grant",type:"spritesheet", width:20, height:20},
         {src: "character.png", id: "character",type:"spritesheet",
-           width:20, 
-           height:20,
+           width:32, 
+           height:64,
            animations:{
-            idle:0,
-            run:[1,5],
-            jump:[6,8,'run']
+            down:[0,5],
+            up:[6,11],
+            left:[12,17],
+            right:[18,25]
            }
         },
         {src: "button_sprite_max.png", id: "buttondemo",type:"spritesheet", width:180, height:30},

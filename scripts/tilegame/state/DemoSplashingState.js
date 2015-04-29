@@ -20,7 +20,7 @@ define([
 
   p.Enter = function () {
     this.GameState_Enter();
-    var window = GuiService.getInstance().AddWindow(EntryWindow);
+    this.window = GuiService.getInstance().AddWindow(EntryWindow);
   
   } ;
   
@@ -33,7 +33,7 @@ define([
   
   p.Exit = function () {
     this.GameState_Exit();
-    GuiService.getInstance().RemoveWindow("EntryWindow");
+    GuiService.getInstance().RemoveWindow(this.window);
   } ;
   
   createjs.DemoSplashingState = createjs.promote(DemoSplashingState, "GameState");

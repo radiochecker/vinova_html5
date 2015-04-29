@@ -49,9 +49,12 @@ define([
     Log.LogInfo("stage height " + this.stage.canvas.height);
     this.stage.enableMouseOver();
     
+    this._scenelayer = new SceneLayer();
+    this._scenelayer.initalize();
+    
     this._guilayer = new SceneLayer();
     this._guilayer.initalize();
-    this.stage.addChild(this._guilayer);
+    this.stage.addChild(this._scenelayer,this._guilayer);
   } ;
   
   p.Update = function(time_elapsed){
@@ -64,6 +67,10 @@ define([
   
   p.getGuiLayer = function(){
     return this._guilayer;
+  } ;
+  
+  p.getSceneLayer = function(){
+    return this._scenelayer;
   } ;
 
   p.getCanvasScale = function(){

@@ -1,5 +1,6 @@
 define([
   'lib/easel',
+  'lib/hammer.min',
   "class/state/StateMachine",
   'class/service/ServiceBase',
   "class/base/GameDefine",
@@ -11,7 +12,7 @@ define([
   'tilegame/state/DemoBox2dState',
   "tilegame/common/GameSettings",
   
-  ], function(createjs,StateMachine,ServiceBase,DEFINE,Log,DemoLoadingState,DemoSplashingState,DemoEntryState,DemoGameState,DemoBox2dState,SETTINGS) {
+  ], function(createjs,Hammer,StateMachine,ServiceBase,DEFINE,Log,DemoLoadingState,DemoSplashingState,DemoEntryState,DemoGameState,DemoBox2dState,SETTINGS) {
   
   if (typeof createjs === 'undefined' ) {
         createjs = window.createjs;
@@ -44,21 +45,25 @@ define([
     mc.on("swipeleft", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.LEFT,ev);
+      ev.preventDefault();
     });
     
     mc.on("swiperight", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.RIGHT,ev);
+      ev.preventDefault();
     });
     
     mc.on("swipeup", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.UP,ev);
+      ev.preventDefault();
     });
     
     mc.on("swipedown", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.DOWN,ev);
+      ev.preventDefault();
     });
     
   } ;
