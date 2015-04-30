@@ -50,7 +50,7 @@ define([
   p.Update = function(time_elapsed){
     this.waitingtime -= time_elapsed;
     if(this.waitingtime < 0){
-       this.m_statemachine.ChangeState("DemoSplashingState");
+       this.m_statemachine.ChangeState("DemoGameState");
     }
   } ;
   
