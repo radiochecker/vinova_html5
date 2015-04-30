@@ -41,6 +41,7 @@ define([
   };
   
   p.RemoveWindow = function(window){
+    this._activewindows[window.get_name()] = null;
     this._guiroot.removeChild(window);
   };
 
@@ -48,6 +49,9 @@ define([
     
   };
 
+  p.HandleEvent = function(e){
+    return false;
+  } ;
   
   function createInstance() {
     var _gui_service_instance = new GuiService();

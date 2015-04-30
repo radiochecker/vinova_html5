@@ -48,6 +48,26 @@ define([
     
   } ;
   
+  p.Tab = function(ev) {
+    
+  } ;
+  
+  p.DoubleTab = function(ev) {
+    
+  } ;
+  
+  p.Pan = function(ev) {
+    
+  } ;
+  
+  p.Pinch = function(ev) {
+    
+  } ;
+  
+  p.Rotate = function(ev) {
+    
+  } ;
+  
   p.Update = function(time_elapsed) {       
     
   };

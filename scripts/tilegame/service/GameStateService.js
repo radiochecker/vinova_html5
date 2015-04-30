@@ -51,25 +51,73 @@ define([
     mc.on("swipeleft", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.LEFT,ev);
-      ev.gesture.preventDefault();
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
     });
     
     mc.on("swiperight", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.RIGHT,ev);
-      ev.gesture.preventDefault();
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
     });
     
     mc.on("swipeup", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.UP,ev);
-      ev.gesture.preventDefault();
+       ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
     });
     
     mc.on("swipedown", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Swipe(DEFINE.DIRECTION.DOWN,ev);
-      ev.gesture.preventDefault();
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
+    });
+    
+    mc.on("tab", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Tab(ev);
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
+    });
+    
+    mc.on("doubletab", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.DoubleTab(ev);
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
+    });
+    
+    mc.on("pan", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Pan(ev);
+       ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
+    });
+    
+    mc.on("pinch", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.Pinch(ev);
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
     });
     
   } ;
