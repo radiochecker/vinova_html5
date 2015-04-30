@@ -23,10 +23,10 @@ function() {
            width:32, 
            height:64,
            animations:{
-            down:[0,5],
-            up:[6,11],
-            left:[12,17],
-            right:[18,25]
+            down:{frames:[2,3,4,5],speed:0.1},
+            up:{frames:[8,9,10,11],speed:0.1},
+            left:{frames:[14,15,16,17],speed:0.1},
+            right:{frames:[20,21,22,23],speed:0.1},
            }
         },
         {src: "button_sprite_max.png", id: "buttondemo",type:"spritesheet", width:180, height:30},

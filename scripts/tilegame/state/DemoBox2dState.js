@@ -26,7 +26,7 @@ define([
 
   p.Enter = function () {
     this.GameState_Enter();
-
+  
     Box2DManager.getInstance().initalize(SETTINGS.BOX2D_SETTING);
     
     var obj = new SceneObject();

@@ -84,7 +84,7 @@ define([
       }
     });
     
-    mc.on("tab", function(ev) {
+    mc.on("tap", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.Tab(ev);
       ev.preventDefault();
@@ -93,7 +93,7 @@ define([
       }
     });
     
-    mc.on("doubletab", function(ev) {
+    mc.on("doubletap", function(ev) {
       var state = context.stateMachine.GetCurrentState();
       state.DoubleTab(ev);
       ev.preventDefault();

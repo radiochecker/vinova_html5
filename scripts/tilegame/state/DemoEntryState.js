@@ -10,7 +10,6 @@ define([
   
   function DemoEntryState(statemachine) {
     this.GameState_constructor("DemoEntryState",statemachine);
-    this.page = new createjs.Container();
     this.waitingtime = 5;
   }
   
@@ -18,8 +17,6 @@ define([
 
   p.Enter = function () {
     this.GameState_Enter();
-       
-    stage.addChild(this.page);
   
   } ;
   
