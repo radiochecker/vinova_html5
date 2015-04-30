@@ -86,7 +86,7 @@ define([
     
     mc.on("tap", function(ev) {
       var state = context.stateMachine.GetCurrentState();
-      state.Tab(ev);
+      state.Tap(ev);
       ev.preventDefault();
       if(ev.gesture != null){
         ev.gesture.preventDefault();
@@ -95,7 +95,7 @@ define([
     
     mc.on("doubletap", function(ev) {
       var state = context.stateMachine.GetCurrentState();
-      state.DoubleTab(ev);
+      state.DoubleTap(ev);
       ev.preventDefault();
       if(ev.gesture != null){
         ev.gesture.preventDefault();

@@ -18,7 +18,7 @@ define([
     p.initalize = function() {
       this.initalizeWithJson(GUI.ENTRY_WINDOW);  
       
-      var btn  = this.getChildByName("close");
+     /* var btn  = this.getChildByName("close");
       btn.on("click",function(e){
           alert("close got hit");
       });
@@ -26,7 +26,7 @@ define([
       var btn2  = this.getChildByName("next");
       btn2.on("click",function(e){
           createjs.GameStateService.getInstance().stateMachine.ChangeState("DemoGameState");
-      });
+      });*/
       
     } ;
 

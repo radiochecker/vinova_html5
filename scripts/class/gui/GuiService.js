@@ -49,7 +49,19 @@ define([
     
   };
 
+  //handle the hammer event
   p.HandleEvent = function(e){
+    
+    var scale = SceneService.getInstance().getCanvasScale();
+      
+    var x = e.center.x/scale;
+    var y = e.center.y/scale;
+    var stage = SceneService.getInstance().stage;
+    var objectlist = stage.getObjectsUnderPoint(x, y);
+    for(var i=0;i<objectlist.length;i++) 
+    { 
+      var object = objectlist[i]; 
+    } 
     return false;
   } ;
   

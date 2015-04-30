@@ -31,6 +31,10 @@ define([
     }
   } ;
   
+  p.Tap = function(ev){
+    GuiService.getInstance().HandleEvent(ev);
+  } ;
+  
   p.Exit = function () {
     this.GameState_Exit();
     GuiService.getInstance().RemoveWindow(this.window);

@@ -48,11 +48,11 @@ define([
     
   } ;
   
-  p.Tab = function(ev) {
+  p.Tap = function(ev) {
     
   } ;
   
-  p.DoubleTab = function(ev) {
+  p.DoubleTap = function(ev) {
     
   } ;
   
