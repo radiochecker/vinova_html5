@@ -15,6 +15,12 @@ define([
     
     var p = createjs.extend(ImageButton, BaseButton);
 
+    p.isType = function(type){
+      if(type == "ImageButton"){
+        return true;
+      }
+      return this.BaseButton_isType(type);
+    } ; 
        
     p.initalizeWithJson = function(data){
       this.BaseButton_initalizeWithJson(data);

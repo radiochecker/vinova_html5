@@ -12,6 +12,13 @@ define([
     }
     var p = createjs.extend(PlainButton, BaseButton);
     
+    p.isType = function(type){
+      if(type == "PlainButton"){
+        return true;
+      }
+      return this.BaseButton_isType(type);
+    } ;
+    
     p.initalizeWithJson = function(data) {
       this.BaseButton_initalizeWithJson(data);
       

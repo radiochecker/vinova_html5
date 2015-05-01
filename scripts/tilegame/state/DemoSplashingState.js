@@ -21,14 +21,16 @@ define([
   p.Enter = function () {
     this.GameState_Enter();
     this.window = GuiService.getInstance().AddWindow(EntryWindow);
-  
+    var button = this.window.GetGUIElement("next","BaseButton");
+    if(button){
+      button.AddClickEvent(this,function(caller,e){
+        caller.m_statemachine.ChangeState("DemoGameState");
+      });
+    }
   } ;
   
   p.Update = function(time_elapsed){
-    this.waitingtime -= time_elapsed;
-    if(this.waitingtime < 0){
-       //this.m_statemachine.ChangeState("DemoEntryState");
-    }
+    
   } ;
   
   p.Tap = function(ev){

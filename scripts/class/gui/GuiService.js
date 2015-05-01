@@ -60,7 +60,10 @@ define([
     var objectlist = stage.getObjectsUnderPoint(x, y);
     for(var i=0;i<objectlist.length;i++) 
     { 
-      var object = objectlist[i]; 
+      var object = objectlist[i].parent;
+      if(object.isType("GuiElement") && object.HandleEvent(e)){
+        return true;
+      } 
     } 
     return false;
   } ;

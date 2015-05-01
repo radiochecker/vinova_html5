@@ -14,7 +14,7 @@ define([
   var p = createjs.extend(BaseComponent, BaseObject);
   
   p.isType = function(type){
-    if(type == this._type){
+    if(type == "BaseComponent"){
       return true;
     }else{
       return this.BaseObject_isType(type); 
