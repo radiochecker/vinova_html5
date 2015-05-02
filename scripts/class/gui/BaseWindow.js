@@ -12,7 +12,7 @@ define([
       this._name = "null";
     }
     
-    var p = createjs.extend(BaseWindow, createjs.GuiElement);
+    var p = createjs.extend(BaseWindow, GuiElement);
     
     p.isType = function(type){
       if(type == "BaseWindow"){
@@ -21,7 +21,7 @@ define([
       return this.GuiElement_isType(type);
     } ;   
     
-    p.GetElement = function(name,type){
+    p.GetGUIElement = function(name,type){
       var object = this.getChildByName(name);
       if(type == null)
         return object;

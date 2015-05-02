@@ -1,5 +1,5 @@
 define([
-    'lib/easel'
+    'lib/easel',
     'class/gui/GuiElement',
     ], function(createjs,GuiElement) {
   
@@ -13,7 +13,7 @@ define([
       this._eventlist = {};
     }
     
-    var p = createjs.extend(BaseButton, createjs.GuiElement);
+    var p = createjs.extend(BaseButton, GuiElement);
 
     p.isType = function(type){
       if(type == "BaseButton"){
@@ -48,7 +48,7 @@ define([
     p._addevent = function(type,obj){
       if(!this._eventlist.hasOwnProperty(type))
           this._eventlist[type] = [];
-      this._eventlist[type].push_back(obj);
+      this._eventlist[type].push(obj);
     } ;
     
     p._removeevent = function(type,caller){
@@ -60,7 +60,13 @@ define([
     } ;
     
     p.HandleEvent = function(e){
-      
+      switch (e.type){
+        case "tap":
+          this._triggerEvent("click",e);
+          break;
+        default:
+          break;
+      }
     } ;
     
     p._triggerEvent = function(type,e){
