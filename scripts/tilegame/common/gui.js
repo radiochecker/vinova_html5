@@ -1,15 +1,20 @@
-define(
-function() {
+define([
+    'tilegame/common/GameSettings'
+    ],function(_settings) {
   var _guis = {
     LOADING_WINDOW : {
       children:[
         {
           type: "plainbutton",
           property:{
-            x:20,y:50,
-            name: "close",
-            label:"close",
-            color:"DeepSkyBlue",
+            x:0,
+            xalign:"center",
+            yalign:"center",
+            y:0,
+            name: "loading",
+            label:"loading game ...",
+            color:_settings.SCENE_SETTING.BKCOLOR,
+            textcolor:"#ffffff",
             width:180,
             height:30
           }
@@ -19,9 +24,9 @@ function() {
         x:0,
         y:0,
         name: "loadingwindow",
-        width:750,
-        height:1035,
-        color:"DeepSkyBlue",
+        width:_settings.SCENE_SETTING.WIDTH, //fullscreen width
+        height:_settings.SCENE_SETTING.HEIGHT,//fullscreen height
+        color:_settings.SCENE_SETTING.BKCOLOR,
       }
     },
     ENTRY_WINDOW : {
@@ -30,10 +35,12 @@ function() {
           type: "plainbutton",
           property:{
             x:20,
-            y:50,
+            y:0,
+            yalign:"top",
             name: "close",
             label:"close",
-            color:"DeepSkyBlue",
+            color:_settings.SCENE_SETTING.BKCOLOR,
+            textcolor:"#ffffff",
             width:280,
             height:80
           }
@@ -41,20 +48,43 @@ function() {
         {
           type: "imagebutton",
           property:{
-            x:40,
-            y:200,
+            x:0,
+            y:0,
+            xalign:"center",
+            yalign:"center",
             image:"buttondemo",
-            name: "next"
+            name: "next",
+            label:"close",
+            color:_settings.SCENE_SETTING.BKCOLOR,
+            textcolor:"#ffffff",
+            width:180,
+            height:30
+          }
+        },
+        {
+          type: "imagebutton",
+          property:{
+            x:0,
+            y:0,
+            xalign:"right",
+            yalign:"bottom",
+            image:"buttondemo",
+            name: "boxgame",
+            label:"boxgame",
+            color:_settings.SCENE_SETTING.BKCOLOR,
+            textcolor:"#ffffff",
+            width:180,
+            height:30
           }
         }
+        
       ],
       property:{
         x:0,
         y:0,
         name: "entrywindow",
-        width:400,
-        height:600,
-  
+        width:_settings.SCENE_SETTING.WIDTH, //fullscreen width
+        height:_settings.SCENE_SETTING.HEIGHT,//fullscreen height
         image:"loading"
       }
     }

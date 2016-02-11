@@ -27,6 +27,14 @@ define([
         caller.m_statemachine.ChangeState("DemoGameState");
       });
     }
+    
+    var buttonbox = this.window.GetGUIElement("boxgame","BaseButton");
+    if(buttonbox){
+      buttonbox.AddClickEvent(this,function(caller,e){
+        caller.m_statemachine.ChangeState("DemoBox2dState");
+      });
+    }
+    
   } ;
   
   p.Update = function(time_elapsed){

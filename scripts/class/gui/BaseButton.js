@@ -35,6 +35,32 @@ define([
       this.name = data.name;
       this.x = data.x;
       this.y = data.y;
+            
+      //initalize the text data
+      if(typeof(data.label) !== "undefined"){
+        this.label = data.label;
+        var textcolor = "#000";
+        var size = "20px";
+        var font = "Arial";
+        
+        if(typeof(data.textcolor) !== "undefined"){
+          textcolor = data.textcolor;
+        }
+        if(typeof(data.size) !== "undefined"){
+          size = data.size;
+        }
+        if(typeof(data.font) !== "undefined"){
+          font = data.font;
+        }
+        
+        this.text = new createjs.Text(this.label, size + " " + font, textcolor);
+        
+        this.text.textBaseline = "center";
+        this.text.textAlign = "center";
+        this.text.x = data.width/2;
+        this.text.y = data.height/2+10;
+      }
+      
     } ;
 
     p.handleRoll = function(event) {       

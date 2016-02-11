@@ -1,3 +1,8 @@
+/*
+ this state should be the same with the html staging color
+ and display the loading on the plain screen
+ it will be used for caching the default assets for mainUI
+*/
 define([
   'lib/easel',
   'class/state/GameState',
@@ -5,8 +10,9 @@ define([
   'class/gui/GuiService',
   'class/service/ResourceService',
   'tilegame/common/GameSettings',
-  'tilegame/gui/LoadingWindow'
-  ], function(createjs,GameState,SceneService,GuiService,ResourceService,SETTINGS,LoadingWindow) {
+  'tilegame/gui/LoadingWindow',
+  'jquery'
+  ], function(createjs,GameState,SceneService,GuiService,ResourceService,SETTINGS,LoadingWindow,jquery) {
   
   if (typeof createjs === 'undefined' ) {
       createjs = window.createjs;
@@ -22,23 +28,8 @@ define([
     this.GameState_Enter();
     
     this.window = GuiService.getInstance().AddWindow(LoadingWindow);
-    
-    /* var stage = SceneService.getInstance().stage;
-    var bk = new createjs.Shape();
-    bk.graphics.beginFill("DeepSkyBlue").drawRect(0, 0, SceneService.getInstance().get_width(),SceneService.getInstance().get_height());
-    bk.x = 0;
-    bk.y = 0;
-    
-    var text = new createjs.Text("Loading...", "20px Arial", "#000");
-    text.textBaseline = "top";
-    text.textAlign = "center";
-    text.x = SceneService.getInstance().get_width()/2;
-    text.y = SceneService.getInstance().get_height()/2 - text.getMeasuredHeight()/2;
-    
-    this.page.addChild(bk,text);
-    
-    stage.addChild(this.page);*/
-     
+    $("#loading").hide();
+    $("#"+SETTINGS.SCENE_SETTING.CANVAS_NAME).show(); 
     this.waitingtime = 5000;
     ResourceService.getInstance().PreloadAndCacheAssets(SETTINGS.PRELOAD_ASSETS,this,
       function(result,data,caller){

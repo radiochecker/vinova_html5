@@ -43,9 +43,7 @@ define([
         bk.x = 0;
         bk.y = 0;
         this.addChild(bk);
-      }
-      
-      if(data.hasOwnProperty("image")){
+      }else if(data.hasOwnProperty("image")){
         var bitmap = ResourceService.getInstance().GetAsset(data.image,"bitmap").bitmap;
         if(bitmap != null){
           var bit = bitmap.clone(true);
@@ -54,28 +52,68 @@ define([
           bit.y = 0;
           this.addChild(bit);
         }
+      }else{
+        LOG.LogError("can not create window background: no image and no color is set");
       }
+      
       this.width = data.width;
       this.height = data.height;
         
     } ;
     
+    p.adjustChildAlignment = function(control,data){
+      if(typeof(data.width) == "undefined")
+        return;  
+      
+      if(typeof(data.xalign) !== "undefined"){
+        switch(data.xalign){
+          case "left":
+            break;
+          case "center":
+            control.x = (this.width/2 - data.width/2) + data.x;
+            break;
+          case "right":
+            control.x = (this.width - data.width) + data.x;
+            break;
+          default:
+            LOG.LogError("unsupported x alignment " + data.xlaign + "in window:"+ this.name);
+        }
+      }
+      if(typeof(data.yalign) !== "undefined"){
+        switch(data.yalign){
+          case "top":
+            break;
+          case "center":
+            control.y = (this.height/2 - data.height/2) + data.y;
+            break;
+          case "bottom":
+            control.y = (this.height - data.height) + data.y;
+            break;
+          default:
+            LOG.LogError("unsupported y alignment " + data.xlaign + "in window:"+ this.name);
+        }
+      }
+    } ;
+    
     p.parseChildElements = function(data){
+      
+      var button = null;
       switch(data.type){
         case "imagebutton":
-          var button = new ImageButton();
-          button.initalizeWithJson(data.property);
-          //button.addEventListener("mousedown",function(e){alert("imagebutton");});
-          this.addChild(button);
+          button = new ImageButton();
           break;
         case "plainbutton":
-          var button = new PlainButton();
-          button.initalizeWithJson(data.property);
-          //button.addEventListener("mousedown",function(e){alert("plainbutton");});
-          this.addChild(button);
+          button = new PlainButton();         
           break;
         default:
           break;
+      }
+      
+      if(button != null){
+        button.initalizeWithJson(data.property);
+        this.adjustChildAlignment(button,data.property);
+        //button.addEventListener("mousedown",function(e){alert("plainbutton");});
+        this.addChild(button);
       }
     }
 

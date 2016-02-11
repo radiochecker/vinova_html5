@@ -20,29 +20,21 @@ define([
     } ;
     
     p.initalizeWithJson = function(data) {
+      this.width = data.width;
+      this.height = data.height;
+      
       this.BaseButton_initalizeWithJson(data);
-      
+    
       this.color = data.color;
-      this.label = data.label;
       
-      this.text = new createjs.Text(this.label, "20px Arial", "#000");
-      this.text.textBaseline = "center";
-      this.text.textAlign = "center";
-      this.text.x = data.width/2;
-      this.text.y = data.height/2;
-      
-     
+       
       this.background = new createjs.Shape();
       this.background.x = 0;
       this.background.y = 0;
       this.background.graphics.beginFill(this.color).drawRoundRect(0,0,data.width,data.height,5);
       
       this.addChild(this.background, this.text); 
-      
-      
-      this.width = data.width;
-      this.height = data.height;
-      
+    
       this.initalizeEvents();
 
     } ;

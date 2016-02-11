@@ -8,6 +8,7 @@ function() {
     SCENE_SETTING:{
       CANVAS_NAME:"demoCanvas",
       FULLSCREEN: true,
+      BKCOLOR:"#22507d",
       WIDTH:350,
       HEIGHT:635
     },

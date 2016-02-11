@@ -23,17 +23,18 @@ define([
     } ; 
        
     p.initalizeWithJson = function(data){
+      this.width = 180;
+      this.height = 30;
+      
       this.BaseButton_initalizeWithJson(data);
       
       this.background = new createjs.Sprite(ResourceService.getInstance().GetAsset(data.image).spritesheet);
       this.background.x = 0;
       this.background.y = 0;
       this.background.gotoAndStop(0);
-      this.addChild(this.background);
       
-      this.width = 180;
-      this.height = 30;
-      
+      this.addChild(this.background, this.text);
+  
       this.initalizeEvents();  
     } ;
 
