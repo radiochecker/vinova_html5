@@ -32,17 +32,21 @@ define([
     jquery("#loading").hide();
     jquery("#"+SETTINGS.SCENE_SETTING.CANVAS_NAME).show(); 
    
-    this.waitingtime = 5000;
+    this._waitingtime = 5000;
+    this._finishloadingassets = false;
     ResourceService.getInstance().PreloadAndCacheAssets(SETTINGS.PRELOAD_ASSETS,this,
       function(result,data,caller){
-        //caller.statemachine.ChangeState("DemoSplashingState");
+        caller._finishloadingassets = true;
+        if(caller._waitingtime< 0){
+          caller.m_statemachine.ChangeState("DemoSplashingState");
+        }
       }
     );
   } ;
   
   p.Update = function(time_elapsed){
-    this.waitingtime -= time_elapsed;
-    if(this.waitingtime < 0){
+    this._waitingtime -= time_elapsed;
+    if(this._waitingtime < 0 && this._finishloadingassets == true){
        this.m_statemachine.ChangeState("DemoSplashingState");
     }
   } ;
