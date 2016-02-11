@@ -28,8 +28,10 @@ define([
     this.GameState_Enter();
     
     this.window = GuiService.getInstance().AddWindow(LoadingWindow);
-    $("#loading").hide();
-    $("#"+SETTINGS.SCENE_SETTING.CANVAS_NAME).show(); 
+    
+    jquery("#loading").hide();
+    jquery("#"+SETTINGS.SCENE_SETTING.CANVAS_NAME).show(); 
+   
     this.waitingtime = 5000;
     ResourceService.getInstance().PreloadAndCacheAssets(SETTINGS.PRELOAD_ASSETS,this,
       function(result,data,caller){
