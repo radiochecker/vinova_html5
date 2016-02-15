@@ -37,14 +37,18 @@ define([
   } ;
   
   p.Tap = function(ev) {
+    //this._gameController.GetPlayer().Accelerate(1);
+  } ;
+  
+  p.TouchStart = function(ev) {
     this._gameController.GetPlayer().Accelerate(1);
   } ;
   
-  p.Press = function(ev) {
+  p.TouchMove = function(ev) {
     this._gameController.GetPlayer().Accelerate(1);
   } ;
   
-  p.PressUp = function(ev) {
+  p.TouchEnd = function(ev) {
     this._gameController.GetPlayer().Accelerate(0);
   } ;
   

@@ -85,14 +85,22 @@ define([
       this._addevent('doubleclick',{caller:caller,callback:callback});
     } ;
     
+    p.onclick = function(evt){
+      this._triggerEvent("click",evt);
+    } ;
+    
+    p.ontouchend = function(evt){
+      this._triggerEvent("click",evt);
+    } ;
+    
     p.HandleEvent = function(e){
-      switch (e.type){
+      /*switch (e.type){
         case "tap":
           this._triggerEvent("click",e);
           break;
         default:
           break;
-      }
+      }*/
     } ;
     
     p._triggerEvent = function(type,e){

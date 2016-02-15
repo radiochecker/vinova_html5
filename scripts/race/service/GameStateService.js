@@ -1,8 +1,10 @@
 define([
   'lib/easel',
   'lib/hammer.min',
+  'lib/touch-emulator',
   "class/state/StateMachine",
   'class/service/ServiceBase',
+  'class/gui/GuiService',
   "class/base/GameDefine",
   "class/base/GameLog",
   'race/state/RaceLoadingState',
@@ -10,7 +12,7 @@ define([
   'race/state/RaceGameState',
   "race/common/GameSettings",
   
-  ], function(createjs,Hammer,StateMachine,ServiceBase,DEFINE,Log,RaceLoadingState,RaceSplashingState,RaceGameState,SETTINGS) {
+  ], function(createjs,Hammer,TouchEmulator,StateMachine,ServiceBase,GuiService,DEFINE,Log,RaceLoadingState,RaceSplashingState,RaceGameState,SETTINGS) {
   
   if (typeof createjs === 'undefined' ) {
         createjs = window.createjs;
@@ -20,6 +22,7 @@ define([
   
   function GameStateService() {
     this.name = "GameStateService";
+    TouchEmulator();
   }
   
   var p =  createjs.extend(GameStateService,ServiceBase);
@@ -83,6 +86,7 @@ define([
     });
     
     mc.on("tap", function(ev) {
+      ev.event_name = 'click';
       var state = context.stateMachine.GetCurrentState();
       state.Tap(ev);
       ev.preventDefault();
@@ -118,23 +122,92 @@ define([
       }
     });
     
-    mc.on("mousedown", function(ev) {
+    mc.on("touchstart", function(ev) {
       var state = context.stateMachine.GetCurrentState();
-      state.Press(ev);
+      state.TouchStart(ev);
+      ev.preventDefault();
+      if(ev.gesture != null){
+        ev.gesture.preventDefault();
+      }
+    });
+
+    mc.on("touchmove", function(ev) {
+      var state = context.stateMachine.GetCurrentState();
+      state.TouchMove(ev);
       ev.preventDefault();
       if(ev.gesture != null){
         ev.gesture.preventDefault();
       }
     });
     
-    mc.on("mouseup", function(ev) {
+    mc.on("touchend", function(ev) {
       var state = context.stateMachine.GetCurrentState();
-      state.PressUp(ev);
+      state.TouchEnd(ev);
       ev.preventDefault();
       if(ev.gesture != null){
         ev.gesture.preventDefault();
       }
     });
+    
+    //The below is for desktop debugging
+    var getCoodinate = function(ev){
+      var x;
+      var y;
+      var e = ev.changedTouches[0];
+      if (e.pageX || e.pageY) { 
+        x = e.pageX;
+        y = e.pageY;
+      }
+      else { 
+        x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+        y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+      } 
+      x -= myElement.offsetLeft;
+      y -= myElement.offsetTop;
+      
+      return {x:x,y:y};
+    };
+    
+    document.body.addEventListener('touchstart', function(ev){
+       ev.event_name = 'touchstart';
+       ev.center= getCoodinate(ev);
+       var bhandle = GuiService.getInstance().HandleEvent(ev);
+        
+       var state = context.stateMachine.GetCurrentState();
+       state.TouchStart(ev);
+       ev.preventDefault();
+       if(ev.gesture != null){
+         ev.gesture.preventDefault();
+       }
+    }, false);
+    
+    document.body.addEventListener('touchmove', function(ev){
+       ev.event_name = 'touchmove';
+       ev.center= getCoodinate(ev);
+       var bhandle = GuiService.getInstance().HandleEvent(ev);
+        
+       var state = context.stateMachine.GetCurrentState();
+       state.TouchMove(ev);
+       ev.preventDefault();
+       if(ev.gesture != null){
+         ev.gesture.preventDefault();
+       }
+    }, false);
+    
+    document.body.addEventListener('touchend', function(ev){
+       ev.event_name = 'touchend';
+       ev.center= getCoodinate(ev);
+       var bhandle = GuiService.getInstance().HandleEvent(ev);
+       var state = context.stateMachine.GetCurrentState();
+       state.TouchEnd(ev);
+       ev.preventDefault();
+       if(ev.gesture != null){
+         ev.gesture.preventDefault();
+       }
+    }, false);
+    
+    
+    
     
   } ;
   

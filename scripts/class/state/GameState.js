@@ -68,11 +68,15 @@ define([
     
   } ;
   
-  p.Press = function(ev) {
+  p.TouchStart = function(ev) {
     
   } ;
   
-  p.PressUp = function(ev) {
+  p.TouchMove = function(ev) {
+    
+  } ;
+  
+  p.TouchEnd = function(ev) {
     
   } ;
   
