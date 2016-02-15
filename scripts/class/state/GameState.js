@@ -68,6 +68,14 @@ define([
     
   } ;
   
+  p.Press = function(ev) {
+    
+  } ;
+  
+  p.PressUp = function(ev) {
+    
+  } ;
+  
   p.Update = function(time_elapsed) {       
     
   };

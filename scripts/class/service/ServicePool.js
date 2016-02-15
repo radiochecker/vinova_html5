@@ -34,6 +34,14 @@ define([
     this._servicelist.push(service);
   } ;
   
+  p.removeService = function(service){
+    for(var i =0; i< this._servicelist.length; i++){
+      if(this._servicelist[i].name == service.name){
+        this._servicelist.splice(i, 1);
+      }
+    }   
+  } ;
+  
   function createInstance() {
     var _service_pool_instance = new ServicePool();
     _service_pool_instance.initalize();

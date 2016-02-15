@@ -22,7 +22,7 @@ require.config({
     //box2d: '//raw.githubusercontent.com/kripken/box2d.js/master/build/Box2D_v2.3.1_min'
   }   
 });
-
+/*
 require(["lib/easel",
          "tilegame/service/GameStateService",
          "tilegame/common/GameSettings",
@@ -42,6 +42,29 @@ require(["lib/easel",
     GuiService.getInstance().initalize();
     ResourceService.getInstance().initalize({});
     GameStateService.getInstance().initalize({startstate:'DemoLoadingState'});
+    TrackingManager.getInstance().AddEvent("gamestart",""); 
+  });
+  
+});*/
+require(["lib/easel",
+         "race/service/GameStateService",
+         "race/common/GameSettings",
+         "class/service/ResourceService",
+         "class/tracking/TrackingManager", 
+         "class/gui/GuiService",
+         "class/service/SceneService",
+         "jquery"], function(createjs,GameStateService,GameSetting,ResourceService,TrackingManager,GuiService,SceneService,jquery) {
+
+  if (typeof createjs === 'undefined' ) {
+    createjs = window.createjs;
+  }
+  
+  jquery("document").ready(function() {
+    TrackingManager.getInstance().initalize(GameSetting.TRACKING_SETTING);       
+    SceneService.getInstance().initalize(GameSetting.SCENE_SETTING);
+    GuiService.getInstance().initalize();
+    ResourceService.getInstance().initalize({});
+    GameStateService.getInstance().initalize({startstate:'RaceLoadingState'});
     TrackingManager.getInstance().AddEvent("gamestart",""); 
   });
   

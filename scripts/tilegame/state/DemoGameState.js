@@ -34,6 +34,10 @@ define([
     
   } ;
   
+  p.Tap = function(ev) {
+     this.character.set_x(0); 
+  } ;
+  
   p.Swipe = function(direction,e){
     
     switch (direction){

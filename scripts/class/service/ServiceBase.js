@@ -21,7 +21,7 @@ define([
   } ;
   
   p.deinitalize = function(){
-  
+    ServicePool.getInstance().removeService(this);
   } ;
   
   p.Update = function(time_elapsed){

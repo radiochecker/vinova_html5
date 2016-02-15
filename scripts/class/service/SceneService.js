@@ -81,10 +81,18 @@ define([
     return this._setting.WIDTH;
   } ;
   
-   p.get_height = function(){
+  p.get_height = function(){
     return this._setting.HEIGHT;
   } ;
   
+  p.getCanvasWidth = function(){
+    return this.stage.canvas.width;
+  } ;
+  
+  p.getCanvasHeight = function(){
+    return this.stage.canvas.height;
+  } ;
+   
   function createInstance() {
     var _scene_service_instance = new SceneService();
     return _scene_service_instance;
