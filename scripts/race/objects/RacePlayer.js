@@ -70,6 +70,15 @@ define([
       this._steerAccelerate = 0;
   };
   
+  p.Steer = function(_var){
+    if(_var < 0)
+      this._steerHorizental = -1;
+    else if(_var > 0)
+      this._steerHorizental = 1;
+    else
+      this._steerHorizental = 0;
+  };
+  
   p.Update = function(dt,controller){
 
       this._playerZ   = (controller.GetMap()._cameraHeight * controller.GetMap()._cameraDepth);

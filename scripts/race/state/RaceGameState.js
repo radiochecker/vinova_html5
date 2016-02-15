@@ -41,15 +41,22 @@ define([
   } ;
   
   p.TouchStart = function(ev) {
+    this._lastpoint = ev.center;
     this._gameController.GetPlayer().Accelerate(1);
   } ;
   
   p.TouchMove = function(ev) {
-    this._gameController.GetPlayer().Accelerate(1);
+    if(ev.center.x < this._lastpoint.x){
+      this._gameController.GetPlayer().Steer(-1);
+    }else{
+      this._gameController.GetPlayer().Steer(1);
+    }
   } ;
   
   p.TouchEnd = function(ev) {
+    this._lastpoint = null;
     this._gameController.GetPlayer().Accelerate(0);
+    this._gameController.GetPlayer().Steer(0);
   } ;
   
   p.Exit = function () {
